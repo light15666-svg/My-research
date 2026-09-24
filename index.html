@@ -3,208 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OmniIntel | Research, Blueprints & Insights</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Light Intelligence | Classified Science & Quantitative Research</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    * {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #0b0f19;
+      background-color: #070a13;
       color: #f8fafc;
+      overflow-x: hidden;
     }
-    /* Colorful Glow Backgrounds */
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
     .blob {
       position: absolute;
-      filter: blur(90px);
+      filter: blur(85px);
       z-index: -1;
-      opacity: 0.45;
+      opacity: 0.35;
       border-radius: 9999px;
-      animation: pulse 6s ease-in-out infinite alternate;
+      pointer-events: none;
     }
-    @keyframes pulse {
-      0% { transform: scale(1) translate(0, 0); }
-      100% { transform: scale(1.15) translate(30px, 20px); }
-    }
-    /* Glassmorphism */
     .glass-card {
-      background: rgba(23, 30, 48, 0.65);
+      background: rgba(17, 24, 39, 0.75);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
     }
-    .glass-card:hover {
-      border-color: rgba(168, 85, 247, 0.4);
-      transform: translateY(-6px);
-      box-shadow: 0 15px 35px -10px rgba(168, 85, 247, 0.25);
-    }
-    /* Blueprint Graph Canvas Grid Background */
     .blueprint-grid {
-      background-size: 24px 24px;
+      background-size: 22px 22px;
       background-image: 
-        linear-gradient(to right, rgba(59, 130, 246, 0.12) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+        linear-gradient(to right, rgba(56, 189, 248, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.12) 1px, transparent 1px);
     }
   </style>
 </head>
-<body class="relative overflow-x-hidden min-h-screen">
+<body class="relative min-h-screen flex flex-col items-center" oncontextmenu="return false;">
 
-  <!-- Ambient Color Glows -->
-  <div class="blob bg-purple-600 w-96 h-96 top-10 left-[-50px]"></div>
-  <div class="blob bg-cyan-500 w-80 h-80 top-40 right-[-30px]"></div>
-  <div class="blob bg-pink-500 w-[450px] h-[450px] bottom-10 left-1/3"></div>
+  <!-- Ambient Glow -->
+  <div class="blob bg-cyan-600 w-80 h-80 top-0 left-[-40px]"></div>
+  <div class="blob bg-amber-500 w-72 h-72 top-40 right-[-30px]"></div>
 
-  <!-- Navigation -->
-  <nav class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-pink-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-        <i class="fa-solid fa-cube text-white text-lg"></i>
+  <!-- Navbar -->
+  <nav class="w-full max-w-5xl px-5 py-4 flex justify-between items-center z-10 border-b border-slate-800/80">
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-400 via-cyan-400 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+        <i class="fa-solid fa-lightbulb text-slate-950 text-base"></i>
       </div>
-      <span class="text-2xl font-extrabold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-300 to-pink-500">
-        OmniIntel
+      <span class="text-xl font-black tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-cyan-300 to-indigo-400">
+        Light Intelligence
       </span>
     </div>
-
-    <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
-      <a href="#blueprints" class="hover:text-cyan-400 transition">Blueprints</a>
-      <a href="#research" class="hover:text-purple-400 transition">Data Graphs</a>
-      <a href="#pricing" class="hover:text-pink-400 transition">Pricing Access</a>
+    <div class="flex items-center gap-2">
+      <button onclick="openRestoreModal()" class="text-slate-400 hover:text-white text-xs px-3 py-1.5 border border-slate-800 rounded-lg">
+        Restore Pass
+      </button>
+      <button onclick="openDirectPaymentModal('VIP All-Access Pass (16-Day)', 1000)" class="bg-gradient-to-r from-amber-500 to-cyan-500 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-full shadow-md shadow-amber-500/20 active:scale-95 transition">
+        VIP Pass
+      </button>
     </div>
-
-    <button class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-cyan-500/25 transition duration-300 transform active:scale-95">
-      Member Login
-    </button>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="max-w-5xl mx-auto px-6 pt-12 pb-16 text-center relative z-10">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-900/40 border border-purple-500/30 text-purple-300 text-xs uppercase tracking-widest font-semibold mb-6">
-      <i class="fa-solid fa-bolt text-yellow-400"></i> Next-Gen Knowledge Hub
+  <!-- Hero Header -->
+  <header class="w-full max-w-3xl px-5 pt-10 pb-6 text-center flex flex-col items-center z-10">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-[11px] uppercase tracking-wider font-semibold mb-3">
+      <i class="fa-solid fa-bolt text-amber-400"></i> Instant 1-Tap UPI Unlock Active
     </div>
-    <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
-      Access High-Value <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500">Research & Blueprints</span>
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-snug mb-3 text-center">
+      Unconventional Science & <br/>
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-cyan-300 to-blue-500">Algorithmic Trading Research</span>
     </h1>
-    <p class="text-slate-400 max-w-2xl mx-auto text-base md:text-lg mb-8">
-      Deep-dive architectural models, technical papers, aur proprietary market data graphs. Unlock premium documents on-demand.
+    <p class="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto mb-6 text-center leading-relaxed">
+      Direct payment karke instant unlock karein. Koi third-party app redirect nahi, content seedha aapki screen par khulega.
     </p>
-    <div class="flex justify-center gap-4">
-      <a href="#blueprints" class="px-7 py-3 rounded-full font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-rose-500 hover:opacity-90 shadow-lg shadow-pink-500/25 transition">
-        Explore Blueprints
-      </a>
-      <button class="px-7 py-3 rounded-full font-semibold border border-slate-700 hover:bg-slate-800/60 transition text-slate-300">
-        How It Works
+
+    <!-- Subscription Promo -->
+    <div class="w-full max-w-md glass-card rounded-2xl p-5 border border-amber-500/30 bg-gradient-to-b from-amber-500/10 to-transparent flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 shadow-xl shadow-amber-500/5">
+      <div class="text-left">
+        <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-400 flex items-center gap-1">
+          <i class="fa-regular fa-clock"></i> 16 Days Validity
+        </span>
+        <h4 class="text-base font-bold text-white">VIP Intelligence Pass</h4>
+        <p class="text-[11px] text-slate-400">Sari research papers aur logic maps ka direct access.</p>
+      </div>
+      <button onclick="openDirectPaymentModal('VIP All-Access Pass (16-Day)', 1000)" class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-cyan-400 text-slate-950 font-black text-xs active:scale-95 transition shadow-md">
+        Subscribe ₹1000
       </button>
     </div>
   </header>
 
-  <!-- Content Section -->
-  <main id="blueprints" class="max-w-7xl mx-auto px-6 py-12 relative z-10">
-    <div class="flex justify-between items-end mb-10">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-bold">Featured Documents & Graphs</h2>
-        <p class="text-slate-400 text-sm mt-1">High-impact schematics ready to download or view.</p>
-      </div>
-      <div class="flex gap-2">
-        <button class="px-4 py-1.5 rounded-lg text-xs bg-slate-800 border border-slate-700 text-cyan-400 font-semibold">All</button>
-        <button class="px-4 py-1.5 rounded-lg text-xs bg-slate-900/40 border border-slate-800 text-slate-400 hover:text-white">AI Models</button>
-        <button class="px-4 py-1.5 rounded-lg text-xs bg-slate-900/40 border border-slate-800 text-slate-400 hover:text-white">System Architecture</button>
-      </div>
+  <!-- Catalog Section -->
+  <main id="catalogSection" class="w-full max-w-5xl px-5 py-4 z-10">
+    <div class="text-center mb-6">
+      <h2 class="text-2xl font-bold">Research Papers & Blueprints</h2>
+      <p class="text-slate-400 text-xs mt-1">Single Document Access: Flat ₹300 (Permanent)</p>
     </div>
 
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-md md:max-w-none mx-auto">
       
-      <!-- Card 1: Free Sample Document -->
+      <!-- Card 1 -->
       <div class="glass-card rounded-2xl overflow-hidden flex flex-col">
-        <div class="h-48 blueprint-grid bg-slate-900 p-4 relative flex items-center justify-center border-b border-slate-800">
-          <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
-            Free Preview
-          </span>
-          <i class="fa-solid fa-chart-line text-5xl text-cyan-400/80"></i>
+        <div class="h-40 blueprint-grid bg-slate-950 p-4 relative flex items-center justify-center border-b border-slate-800">
+          <div class="filter blur-[5px] opacity-40 select-none flex flex-col items-center">
+            <i class="fa-solid fa-chart-line text-5xl text-amber-400"></i>
+          </div>
+          <div class="absolute inset-0 bg-slate-950/60 flex flex-col items-center justify-center">
+            <div class="w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 mb-1.5 shadow-lg shadow-amber-500/20">
+              <i class="fa-solid fa-lock text-sm"></i>
+            </div>
+            <span class="text-[11px] font-semibold text-amber-300">Confidential Model</span>
+          </div>
         </div>
-        <div class="p-6 flex-1 flex flex-col justify-between">
+
+        <div class="p-5 flex-1 flex flex-col justify-between">
           <div>
-            <span class="text-xs font-semibold text-cyan-400 tracking-wide uppercase">Market Analysis</span>
-            <h3 class="text-lg font-bold text-white mt-1">Global Tech Architecture Shift 2026</h3>
+            <div class="flex justify-between items-center">
+              <span class="text-[11px] font-semibold text-amber-400 uppercase tracking-wide">Market Topology</span>
+              <span class="text-sm font-extrabold text-white">₹300</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-1">Non-Random Liquid Matrix</h3>
             <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-              Complete breakdown of decentralized data protocols with open benchmark graphs.
+              Order flow liquidity distribution aur institutional algorithmic behavior ki theoretical derivation.
             </p>
           </div>
-          <button class="mt-6 w-full py-2.5 rounded-xl border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10 font-semibold text-sm transition">
-            View Research Paper
+          <button onclick="openDirectPaymentModal('Non-Random Liquid Matrix', 300)" class="mt-5 w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-cyan-500 text-slate-950 font-bold text-xs active:scale-95 transition">
+            <i class="fa-solid fa-key mr-1"></i> Unlock Paper (₹300)
           </button>
         </div>
       </div>
 
-      <!-- Card 2: Locked Blueprint (Paywalled) -->
-      <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
-        <!-- Blueprint Schematic Preview with Blur -->
-        <div class="h-48 blueprint-grid bg-slate-950 p-4 relative flex items-center justify-center overflow-hidden border-b border-slate-800">
-          <!-- Background pseudo-graph content -->
-          <div class="filter blur-[6px] opacity-40 select-none flex flex-col items-center">
-            <i class="fa-solid fa-diagram-project text-6xl text-purple-400"></i>
-            <span class="text-xs font-mono text-purple-200 mt-2">CONFIDENTIAL SCHEMATIC 014</span>
+      <!-- Card 2 -->
+      <div class="glass-card rounded-2xl overflow-hidden flex flex-col">
+        <div class="h-40 blueprint-grid bg-slate-950 p-4 relative flex items-center justify-center border-b border-slate-800">
+          <div class="filter blur-[5px] opacity-40 select-none flex flex-col items-center">
+            <i class="fa-solid fa-dna text-5xl text-cyan-400"></i>
           </div>
-
-          <!-- Lock Badge Overlay -->
-          <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center">
-            <div class="w-12 h-12 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 mb-2 shadow-lg shadow-pink-500/20 group-hover:scale-110 transition duration-300">
-              <i class="fa-solid fa-lock text-lg"></i>
+          <div class="absolute inset-0 bg-slate-950/60 flex flex-col items-center justify-center">
+            <div class="w-10 h-10 rounded-full bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mb-1.5 shadow-lg shadow-cyan-500/20">
+              <i class="fa-solid fa-lock text-sm"></i>
             </div>
-            <span class="text-xs font-semibold text-pink-300">Premium Locked</span>
+            <span class="text-[11px] font-semibold text-cyan-300">Unpublished Physics</span>
           </div>
         </div>
 
-        <div class="p-6 flex-1 flex flex-col justify-between">
+        <div class="p-5 flex-1 flex flex-col justify-between">
           <div>
             <div class="flex justify-between items-center">
-              <span class="text-xs font-semibold text-pink-400 tracking-wide uppercase">AI Pipeline Blueprint</span>
-              <span class="text-sm font-extrabold text-white">₹499</span>
+              <span class="text-[11px] font-semibold text-cyan-400 uppercase tracking-wide">Theoretical Physics</span>
+              <span class="text-sm font-extrabold text-white">₹300</span>
             </div>
-            <h3 class="text-lg font-bold text-white mt-1">Ultra-Scale LLM Infrastructure Blueprint</h3>
+            <h3 class="text-base font-bold text-white mt-1">Zero-Entropy Transmission Model</h3>
             <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-              Full enterprise deployment layout, pipeline diagram, load balance node graphs aur cost breakdown.
+              Electromagnetic wavefront synchronization aur sub-atomic field interaction blueprint.
             </p>
           </div>
-          <button onclick="openPaymentModal('Ultra-Scale LLM Infrastructure Blueprint', '499')" class="mt-6 w-full py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:opacity-95 text-white font-semibold text-sm shadow-md shadow-purple-500/20 transition active:scale-95">
-            <i class="fa-solid fa-key mr-1.5 text-xs"></i> Unlock Blueprint
-          </button>
-        </div>
-      </div>
-
-      <!-- Card 3: Locked Technical Graph -->
-      <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
-        <div class="h-48 blueprint-grid bg-slate-950 p-4 relative flex items-center justify-center overflow-hidden border-b border-slate-800">
-          <div class="filter blur-[6px] opacity-40 select-none flex flex-col items-center">
-            <i class="fa-solid fa-network-wired text-6xl text-cyan-400"></i>
-            <span class="text-xs font-mono text-cyan-200 mt-2">NETWORK FLOW CHART 99</span>
-          </div>
-
-          <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center">
-            <div class="w-12 h-12 rounded-full bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mb-2 group-hover:scale-110 transition duration-300 shadow-lg shadow-cyan-500/20">
-              <i class="fa-solid fa-lock text-lg"></i>
-            </div>
-            <span class="text-xs font-semibold text-cyan-300">Premium Locked</span>
-          </div>
-        </div>
-
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-center">
-              <span class="text-xs font-semibold text-cyan-400 tracking-wide uppercase">Algorithmic Graph</span>
-              <span class="text-sm font-extrabold text-white">₹799</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mt-1">High-Frequency Trading Topology</h3>
-            <p class="text-slate-400 text-xs mt-2 leading-relaxed">
-              Sub-millisecond routing topologies, micro-service dependency flow aur hardware pipeline charts.
-            </p>
-          </div>
-          <button onclick="openPaymentModal('High-Frequency Trading Topology', '799')" class="mt-6 w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-95 text-white font-semibold text-sm shadow-md shadow-cyan-500/20 transition active:scale-95">
-            <i class="fa-solid fa-key mr-1.5 text-xs"></i> Unlock Blueprint
+          <button onclick="openDirectPaymentModal('Zero-Entropy Transmission Model', 300)" class="mt-5 w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xs active:scale-95 transition">
+            <i class="fa-solid fa-key mr-1"></i> Unlock Paper (₹300)
           </button>
         </div>
       </div>
@@ -212,57 +173,259 @@
     </div>
   </main>
 
-  <!-- Payment Gateway Simulation Modal -->
-  <div id="payModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
-    <div class="glass-card bg-slate-900 border border-slate-700 max-w-md w-full rounded-2xl p-6 shadow-2xl relative">
-      <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-
-      <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white mb-4">
-        <i class="fa-solid fa-shield-halved text-xl"></i>
-      </div>
-
-      <h3 class="text-xl font-bold">Unlock Access</h3>
-      <p id="modalDocTitle" class="text-slate-400 text-xs mt-1 mb-4">Document Title Here</p>
-
-      <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 flex justify-between items-center mb-6">
-        <span class="text-xs text-slate-300">Total Payable:</span>
-        <span id="modalDocPrice" class="text-2xl font-black text-cyan-400">₹0</span>
-      </div>
-
-      <div class="space-y-3">
-        <button onclick="simulateSuccess()" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:opacity-90 font-bold text-sm shadow-lg shadow-emerald-500/20 transition">
-          <i class="fa-brands fa-google-pay text-base mr-1"></i> Pay with UPI / Card (Demo)
+  <!-- Clean Protected Reader View -->
+  <section id="readerView" class="w-full max-w-3xl px-5 py-6 hidden z-20">
+    <div class="glass-card rounded-2xl p-6 border border-cyan-500/40 shadow-2xl relative">
+      
+      <!-- Micro-Badge Header -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-5 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span id="accessTypeBadge" class="text-[10px] font-extrabold text-emerald-400 tracking-widest uppercase bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">
+              ✓ Verified & Unlocked
+            </span>
+            <span id="expiryTimerBadge" class="text-[10px] font-mono text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800/40">
+              16 Days Left
+            </span>
+          </div>
+          <h2 id="readerTitle" class="text-xl font-bold text-white">Classified Paper Dossier</h2>
+        </div>
+        <button onclick="backToCatalog()" class="text-xs text-slate-400 hover:text-white px-3 py-1.5 border border-slate-800 rounded-lg">
+          ← Back to Catalog
         </button>
       </div>
 
-      <p class="text-[11px] text-slate-500 text-center mt-4">
-        🔒 256-bit encrypted checkout. Instant vector graph & blueprint download link.
+      <!-- Content Area -->
+      <div class="mt-6 space-y-5 text-slate-300 text-sm leading-relaxed">
+        <div>
+          <h3 class="text-base font-bold text-cyan-300">1. Mathematical Model Topology</h3>
+          <p class="mt-1">
+            Standard market efficiency assumes price changes follow Gaussian white noise. Under our non-random matrix observation:
+          </p>
+        </div>
+        
+        <div class="bg-slate-950 rounded-xl p-4 border border-slate-800/80 font-mono-code text-xs text-amber-300 overflow-x-auto shadow-inner">
+          $$\Delta P_t = \sum_{k=1}^n \lambda_k \cdot \text{Sign}(I_k) \cdot e^{-\kappa(t - t_k)} + \mathcal{N}(0, \sigma^2)$$
+          <div class="mt-2 text-slate-400">
+            [Matrix State Verified: Order book imbalance density = 0.842 (Arbitrage Viable)]
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-base font-bold text-cyan-300">2. Institutional Latency Footprint</h3>
+          <p class="mt-1">
+            Yeh dynamic imbalance sweeps aur delta volume thresholds par execute hoti hai. Retail order flow hit hone se 120ms pehle skew divergence track ho sakti hai.
+          </p>
+        </div>
+
+        <div class="blueprint-grid bg-slate-950/90 rounded-xl p-6 border border-cyan-500/20 flex flex-col items-center justify-center text-center">
+          <i class="fa-solid fa-network-wired text-3xl text-cyan-400 mb-2"></i>
+          <span class="text-xs font-mono text-cyan-200">INTERACTIVE TOPOLOGY SCHEMATIC</span>
+          <span class="text-[10px] text-slate-400 mt-1">Direct decrypted session • Saved locally to this device</span>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-800/80 flex justify-between items-center text-[11px] text-slate-500">
+        <span id="expiryDateText">Subscription active on this device.</span>
+        <button onclick="clearSession()" class="hover:text-red-400 underline">Logout Session</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- In-Page Direct UPI Modal with Instant Trigger -->
+  <div id="directPayModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="glass-card bg-slate-900 border border-slate-700 max-w-sm w-full rounded-2xl p-5 shadow-2xl relative text-center">
+      <button onclick="closeDirectPaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="w-11 h-11 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mx-auto mb-3">
+        <i class="fa-solid fa-bolt text-lg"></i>
+      </div>
+
+      <h3 class="text-lg font-bold">Instant UPI Settlement</h3>
+      <p id="inModalTitle" class="text-slate-400 text-xs mt-1 mb-3">Item Title</p>
+
+      <!-- Amount Tag -->
+      <div class="bg-slate-800/70 p-3 rounded-xl border border-slate-700 flex justify-between items-center mb-4">
+        <span class="text-xs text-slate-300">Locked Amount:</span>
+        <span id="inModalPrice" class="text-xl font-black text-amber-400">₹0</span>
+      </div>
+
+      <!-- QR Code for PC/Laptop -->
+      <div class="bg-white p-2.5 rounded-2xl inline-block shadow-lg mb-3">
+        <img id="upiQrImg" src="" alt="Scan & Pay" class="w-36 h-36 object-contain mx-auto" />
+      </div>
+      <p class="text-[10px] text-slate-400 mb-3">Scan karein ya seedha button daba kar pay karein:</p>
+
+      <!-- 1-Tap Mobile UPI Intent Button -->
+      <a id="upiIntentBtn" href="#" onclick="listenForPaymentReturn()" class="block w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-extrabold text-xs uppercase tracking-wide shadow-lg shadow-emerald-500/20 active:scale-95 transition mb-3">
+        <i class="fa-brands fa-google-pay text-lg align-middle mr-1"></i> PAY VIA ANY UPI APP
+      </a>
+
+      <p class="text-[10px] text-slate-500">
+        ⚡ Payment complete karke browser par aate hi content screen par instant unlock ho jayega.
       </p>
     </div>
   </div>
 
+  <!-- Restore Passkey Modal -->
+  <div id="restoreModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="glass-card bg-slate-900 border border-slate-700 max-w-xs w-full rounded-2xl p-5 shadow-2xl relative">
+      <button onclick="closeRestoreModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <h3 class="text-base font-bold mb-1">Restore Access</h3>
+      <p class="text-slate-400 text-xs mb-4">Secret Passkey daalein (Demo: <span class="text-cyan-400 font-mono">LIGHT2026</span>):</p>
+      <input id="passkeyInput" type="text" placeholder="Passkey" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white mb-4 outline-none focus:border-cyan-400 font-mono">
+      <button onclick="restoreWithPasskey()" class="w-full py-2.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs">
+        Restore Session
+      </button>
+    </div>
+  </div>
+
   <script>
-    const modal = document.getElementById('payModal');
-    const docTitle = document.getElementById('modalDocTitle');
-    const docPrice = document.getElementById('modalDocPrice');
+    // ----------------------------------------------------
+    // APNI UPI ID AUR RECEIVER NAME YAHAN DAALEIN:
+    const MY_UPI_ID = "light15666@okhdfcbank"; // <-- Yahan apni UPI ID likhein
+    const RECEIVER_NAME = "Light Intelligence";
+    // ----------------------------------------------------
 
-    function openPaymentModal(title, price) {
-      docTitle.innerText = title;
-      docPrice.innerText = '₹' + price;
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+    const directPayModal = document.getElementById('directPayModal');
+    const inModalTitle = document.getElementById('inModalTitle');
+    const inModalPrice = document.getElementById('inModalPrice');
+    const upiQrImg = document.getElementById('upiQrImg');
+    const upiIntentBtn = document.getElementById('upiIntentBtn');
+
+    const catalogSection = document.getElementById('catalogSection');
+    const readerView = document.getElementById('readerView');
+    const readerTitle = document.getElementById('readerTitle');
+    const expiryTimerBadge = document.getElementById('expiryTimerBadge');
+    const expiryDateText = document.getElementById('expiryDateText');
+    const restoreModal = document.getElementById('restoreModal');
+
+    let currentItem = "";
+    let currentCost = 0;
+    let paymentPending = false;
+    const SIXTEEN_DAYS_MS = 16 * 24 * 60 * 60 * 1000;
+
+    window.addEventListener('DOMContentLoaded', checkAccessValidity);
+
+    function checkAccessValidity() {
+      const savedType = localStorage.getItem('li_access_type');
+      const savedItem = localStorage.getItem('li_access_item');
+      const expiryTimestamp = localStorage.getItem('li_expiry_timestamp');
+
+      if (!savedType) return;
+
+      if (savedType === 'vip') {
+        const now = Date.now();
+        if (now > parseInt(expiryTimestamp, 10)) {
+          clearSession(false);
+        } else {
+          const daysRemaining = Math.ceil((parseInt(expiryTimestamp, 10) - now) / (1000 * 60 * 60 * 24));
+          openReader(savedItem, false, `VIP Active (${daysRemaining} Days Left)`, `Valid for next ${daysRemaining} days.`);
+        }
+      } else if (savedType === 'single') {
+        openReader(savedItem, false, 'Permanent Access', 'Lifetime Paper License.');
+      }
     }
 
-    function closePaymentModal() {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+    function openDirectPaymentModal(title, price) {
+      currentItem = title;
+      currentCost = price;
+      inModalTitle.innerText = title;
+      inModalPrice.innerText = '₹' + price;
+      paymentPending = false;
+
+      // Fixed Amount Deep Link (User cannot change amount)
+      const upiUrl = `upi://pay?pa=${MY_UPI_ID}&pn=${encodeURIComponent(RECEIVER_NAME)}&am=${price}&cu=INR&tn=${encodeURIComponent(title)}`;
+      
+      upiQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+      upiIntentBtn.href = upiUrl;
+
+      directPayModal.classList.remove('hidden');
+      directPayModal.classList.add('flex');
     }
 
-    function simulateSuccess() {
-      alert("Payment Successful! In a production setup, your secure PDF/SVG download link or unlocked viewer will appear right here.");
-      closePaymentModal();
+    function closeDirectPaymentModal() {
+      directPayModal.classList.add('hidden');
+      directPayModal.classList.remove('flex');
+      paymentPending = false;
+    }
+
+    // Step 1: User ne Pay button par tap kiya
+    function listenForPaymentReturn() {
+      paymentPending = true;
+    }
+
+    // Step 2: Auto-detect return from UPI App -> Instant Unlock
+    window.addEventListener('focus', () => {
+      if (paymentPending) {
+        paymentPending = false;
+        closeDirectPaymentModal();
+
+        // Trigger Instant Unlock without any delay
+        if (currentCost === 1000) {
+          const expiryTime = Date.now() + SIXTEEN_DAYS_MS;
+          localStorage.setItem('li_access_type', 'vip');
+          localStorage.setItem('li_access_item', currentItem);
+          localStorage.setItem('li_expiry_timestamp', expiryTime.toString());
+          openReader(currentItem, true, 'VIP Active (16 Days Left)', 'Expires in exactly 16 days.');
+        } else {
+          localStorage.setItem('li_access_type', 'single');
+          localStorage.setItem('li_access_item', currentItem);
+          localStorage.removeItem('li_expiry_timestamp');
+          openReader(currentItem, true, 'Permanent Access', 'Lifetime Paper License.');
+        }
+      }
+    });
+
+    function openReader(title, shouldScroll, badgeText, footerText) {
+      readerTitle.innerText = title;
+      expiryTimerBadge.innerText = badgeText;
+      expiryDateText.innerText = footerText;
+      readerView.classList.remove('hidden');
+      if (shouldScroll) {
+        readerView.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function backToCatalog() {
+      readerView.classList.add('hidden');
+      catalogSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openRestoreModal() {
+      restoreModal.classList.remove('hidden');
+      restoreModal.classList.add('flex');
+    }
+    function closeRestoreModal() {
+      restoreModal.classList.add('hidden');
+      restoreModal.classList.remove('flex');
+    }
+
+    function restoreWithPasskey() {
+      const code = document.getElementById('passkeyInput').value.trim();
+      if (code.toUpperCase() === "LIGHT2026") {
+        const expiryTime = Date.now() + SIXTEEN_DAYS_MS;
+        localStorage.setItem('li_access_type', 'vip');
+        localStorage.setItem('li_access_item', 'VIP All-Access Pass (Restored)');
+        localStorage.setItem('li_expiry_timestamp', expiryTime.toString());
+        closeRestoreModal();
+        openReader('VIP All-Access Pass (Restored)', true, 'VIP Active (16 Days Left)', 'Restored 16-day access.');
+        alert("Access Restored!");
+      } else {
+        alert("Invalid Passkey.");
+      }
+    }
+
+    function clearSession(shouldReload = true) {
+      localStorage.removeItem('li_access_type');
+      localStorage.removeItem('li_access_item');
+      localStorage.removeItem('li_expiry_timestamp');
+      if (shouldReload) location.reload();
     }
   </script>
 </body>
