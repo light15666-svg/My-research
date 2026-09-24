@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OmniIntel | Research, Blueprints & Insights</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0b0f19;
+      color: #f8fafc;
+    }
+    /* Colorful Glow Backgrounds */
+    .blob {
+      position: absolute;
+      filter: blur(90px);
+      z-index: -1;
+      opacity: 0.45;
+      border-radius: 9999px;
+      animation: pulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.15) translate(30px, 20px); }
+    }
+    /* Glassmorphism */
+    .glass-card {
+      background: rgba(23, 30, 48, 0.65);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px -10px rgba(168, 85, 247, 0.25);
+    }
+    /* Blueprint Graph Canvas Grid Background */
+    .blueprint-grid {
+      background-size: 24px 24px;
+      background-image: 
+        linear-gradient(to right, rgba(59, 130, 246, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="relative overflow-x-hidden min-h-screen">
+
+  <!-- Ambient Color Glows -->
+  <div class="blob bg-purple-600 w-96 h-96 top-10 left-[-50px]"></div>
+  <div class="blob bg-cyan-500 w-80 h-80 top-40 right-[-30px]"></div>
+  <div class="blob bg-pink-500 w-[450px] h-[450px] bottom-10 left-1/3"></div>
+
+  <!-- Navigation -->
+  <nav class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-pink-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+        <i class="fa-solid fa-cube text-white text-lg"></i>
+      </div>
+      <span class="text-2xl font-extrabold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-300 to-pink-500">
+        OmniIntel
+      </span>
+    </div>
+
+    <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+      <a href="#blueprints" class="hover:text-cyan-400 transition">Blueprints</a>
+      <a href="#research" class="hover:text-purple-400 transition">Data Graphs</a>
+      <a href="#pricing" class="hover:text-pink-400 transition">Pricing Access</a>
+    </div>
+
+    <button class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-cyan-500/25 transition duration-300 transform active:scale-95">
+      Member Login
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="max-w-5xl mx-auto px-6 pt-12 pb-16 text-center relative z-10">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-900/40 border border-purple-500/30 text-purple-300 text-xs uppercase tracking-widest font-semibold mb-6">
+      <i class="fa-solid fa-bolt text-yellow-400"></i> Next-Gen Knowledge Hub
+    </div>
+    <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
+      Access High-Value <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-500">Research & Blueprints</span>
+    </h1>
+    <p class="text-slate-400 max-w-2xl mx-auto text-base md:text-lg mb-8">
+      Deep-dive architectural models, technical papers, aur proprietary market data graphs. Unlock premium documents on-demand.
+    </p>
+    <div class="flex justify-center gap-4">
+      <a href="#blueprints" class="px-7 py-3 rounded-full font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-rose-500 hover:opacity-90 shadow-lg shadow-pink-500/25 transition">
+        Explore Blueprints
+      </a>
+      <button class="px-7 py-3 rounded-full font-semibold border border-slate-700 hover:bg-slate-800/60 transition text-slate-300">
+        How It Works
+      </button>
+    </div>
+  </header>
+
+  <!-- Content Section -->
+  <main id="blueprints" class="max-w-7xl mx-auto px-6 py-12 relative z-10">
+    <div class="flex justify-between items-end mb-10">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold">Featured Documents & Graphs</h2>
+        <p class="text-slate-400 text-sm mt-1">High-impact schematics ready to download or view.</p>
+      </div>
+      <div class="flex gap-2">
+        <button class="px-4 py-1.5 rounded-lg text-xs bg-slate-800 border border-slate-700 text-cyan-400 font-semibold">All</button>
+        <button class="px-4 py-1.5 rounded-lg text-xs bg-slate-900/40 border border-slate-800 text-slate-400 hover:text-white">AI Models</button>
+        <button class="px-4 py-1.5 rounded-lg text-xs bg-slate-900/40 border border-slate-800 text-slate-400 hover:text-white">System Architecture</button>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Card 1: Free Sample Document -->
+      <div class="glass-card rounded-2xl overflow-hidden flex flex-col">
+        <div class="h-48 blueprint-grid bg-slate-900 p-4 relative flex items-center justify-center border-b border-slate-800">
+          <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+            Free Preview
+          </span>
+          <i class="fa-solid fa-chart-line text-5xl text-cyan-400/80"></i>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-semibold text-cyan-400 tracking-wide uppercase">Market Analysis</span>
+            <h3 class="text-lg font-bold text-white mt-1">Global Tech Architecture Shift 2026</h3>
+            <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+              Complete breakdown of decentralized data protocols with open benchmark graphs.
+            </p>
+          </div>
+          <button class="mt-6 w-full py-2.5 rounded-xl border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10 font-semibold text-sm transition">
+            View Research Paper
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2: Locked Blueprint (Paywalled) -->
+      <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
+        <!-- Blueprint Schematic Preview with Blur -->
+        <div class="h-48 blueprint-grid bg-slate-950 p-4 relative flex items-center justify-center overflow-hidden border-b border-slate-800">
+          <!-- Background pseudo-graph content -->
+          <div class="filter blur-[6px] opacity-40 select-none flex flex-col items-center">
+            <i class="fa-solid fa-diagram-project text-6xl text-purple-400"></i>
+            <span class="text-xs font-mono text-purple-200 mt-2">CONFIDENTIAL SCHEMATIC 014</span>
+          </div>
+
+          <!-- Lock Badge Overlay -->
+          <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center">
+            <div class="w-12 h-12 rounded-full bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-400 mb-2 shadow-lg shadow-pink-500/20 group-hover:scale-110 transition duration-300">
+              <i class="fa-solid fa-lock text-lg"></i>
+            </div>
+            <span class="text-xs font-semibold text-pink-300">Premium Locked</span>
+          </div>
+        </div>
+
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-semibold text-pink-400 tracking-wide uppercase">AI Pipeline Blueprint</span>
+              <span class="text-sm font-extrabold text-white">₹499</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mt-1">Ultra-Scale LLM Infrastructure Blueprint</h3>
+            <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+              Full enterprise deployment layout, pipeline diagram, load balance node graphs aur cost breakdown.
+            </p>
+          </div>
+          <button onclick="openPaymentModal('Ultra-Scale LLM Infrastructure Blueprint', '499')" class="mt-6 w-full py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:opacity-95 text-white font-semibold text-sm shadow-md shadow-purple-500/20 transition active:scale-95">
+            <i class="fa-solid fa-key mr-1.5 text-xs"></i> Unlock Blueprint
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3: Locked Technical Graph -->
+      <div class="glass-card rounded-2xl overflow-hidden flex flex-col relative group">
+        <div class="h-48 blueprint-grid bg-slate-950 p-4 relative flex items-center justify-center overflow-hidden border-b border-slate-800">
+          <div class="filter blur-[6px] opacity-40 select-none flex flex-col items-center">
+            <i class="fa-solid fa-network-wired text-6xl text-cyan-400"></i>
+            <span class="text-xs font-mono text-cyan-200 mt-2">NETWORK FLOW CHART 99</span>
+          </div>
+
+          <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] flex flex-col items-center justify-center">
+            <div class="w-12 h-12 rounded-full bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 mb-2 group-hover:scale-110 transition duration-300 shadow-lg shadow-cyan-500/20">
+              <i class="fa-solid fa-lock text-lg"></i>
+            </div>
+            <span class="text-xs font-semibold text-cyan-300">Premium Locked</span>
+          </div>
+        </div>
+
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-semibold text-cyan-400 tracking-wide uppercase">Algorithmic Graph</span>
+              <span class="text-sm font-extrabold text-white">₹799</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mt-1">High-Frequency Trading Topology</h3>
+            <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+              Sub-millisecond routing topologies, micro-service dependency flow aur hardware pipeline charts.
+            </p>
+          </div>
+          <button onclick="openPaymentModal('High-Frequency Trading Topology', '799')" class="mt-6 w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-95 text-white font-semibold text-sm shadow-md shadow-cyan-500/20 transition active:scale-95">
+            <i class="fa-solid fa-key mr-1.5 text-xs"></i> Unlock Blueprint
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Payment Gateway Simulation Modal -->
+  <div id="payModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="glass-card bg-slate-900 border border-slate-700 max-w-md w-full rounded-2xl p-6 shadow-2xl relative">
+      <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white mb-4">
+        <i class="fa-solid fa-shield-halved text-xl"></i>
+      </div>
+
+      <h3 class="text-xl font-bold">Unlock Access</h3>
+      <p id="modalDocTitle" class="text-slate-400 text-xs mt-1 mb-4">Document Title Here</p>
+
+      <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 flex justify-between items-center mb-6">
+        <span class="text-xs text-slate-300">Total Payable:</span>
+        <span id="modalDocPrice" class="text-2xl font-black text-cyan-400">₹0</span>
+      </div>
+
+      <div class="space-y-3">
+        <button onclick="simulateSuccess()" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:opacity-90 font-bold text-sm shadow-lg shadow-emerald-500/20 transition">
+          <i class="fa-brands fa-google-pay text-base mr-1"></i> Pay with UPI / Card (Demo)
+        </button>
+      </div>
+
+      <p class="text-[11px] text-slate-500 text-center mt-4">
+        🔒 256-bit encrypted checkout. Instant vector graph & blueprint download link.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('payModal');
+    const docTitle = document.getElementById('modalDocTitle');
+    const docPrice = document.getElementById('modalDocPrice');
+
+    function openPaymentModal(title, price) {
+      docTitle.innerText = title;
+      docPrice.innerText = '₹' + price;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closePaymentModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function simulateSuccess() {
+      alert("Payment Successful! In a production setup, your secure PDF/SVG download link or unlocked viewer will appear right here.");
+      closePaymentModal();
+    }
+  </script>
+</body>
+</html>
