@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Light Intelligence | Quantitative Research & Classified Models</title>
+  <title>Light Intelligence | Quantitative & Theoretical Physics Vault</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,9 +13,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
-  <!-- Firebase App & Auth SDKs -->
+  <!-- Firebase App, Auth & Firestore SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
   <style>
     * {
@@ -37,12 +38,12 @@
       font-family: 'JetBrains Mono', monospace;
     }
     .glass-card {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(244, 63, 94, 0.2);
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(244, 63, 94, 0.22);
     }
     .cyber-grid {
-      background-size: 28px 28px;
+      background-size: 26px 26px;
       background-image: 
         linear-gradient(to right, rgba(244, 63, 94, 0.08) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
@@ -51,7 +52,7 @@
 </head>
 <body class="min-h-screen flex flex-col items-center justify-start antialiased" oncontextmenu="return false;">
 
-  <!-- Header -->
+  <!-- Navbar -->
   <nav class="w-full max-w-xl mx-auto px-4 py-3.5 flex justify-between items-center border-b border-pink-500/20 bg-[#030712]/90 sticky top-0 z-30 backdrop-blur-md">
     <div class="flex items-center gap-2.5">
       <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-500 via-purple-600 to-blue-600 flex items-center justify-center shadow-lg shadow-pink-500/25">
@@ -67,7 +68,7 @@
       <div id="googleAuthArea">
         <button id="loginBtn" onclick="handleGoogleSignIn()" class="flex items-center gap-2 text-xs font-bold text-slate-200 bg-slate-900/90 hover:bg-slate-800 border border-pink-500/30 px-3 py-2 rounded-xl active:scale-95 transition shadow-sm">
           <i class="fa-brands fa-google text-pink-400"></i>
-          <span>G Login</span>
+          <span>Login</span>
         </button>
 
         <div id="userProfile" class="hidden items-center gap-2">
@@ -78,7 +79,7 @@
         </div>
       </div>
 
-      <button onclick="initiateCheckout('VIP 16-Day Membership', 1000)" class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-400 hover:to-rose-500 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl shadow-lg shadow-pink-500/30 active:scale-95 transition">
+      <button onclick="initiateCheckout('manuscript_vip', 'Full Theoretical Physics Manuscript (VIP)', 1000, 'vip')" class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-400 hover:to-rose-500 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl shadow-lg shadow-pink-500/30 active:scale-95 transition">
         VIP Pass
       </button>
     </div>
@@ -87,100 +88,143 @@
   <!-- Hero Section -->
   <header class="w-full max-w-xl mx-auto px-4 pt-8 pb-5 text-center flex flex-col items-center">
     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-950/40 border border-pink-500/40 text-pink-300 text-xs uppercase tracking-wider font-bold mb-3.5">
-      <i class="fa-solid fa-shield-halved text-pink-400"></i> Locked Quantitative Dossiers
+      <i class="fa-solid fa-shield-halved text-pink-400"></i> Cloud-Encrypted Research Vault
     </div>
     
     <h1 class="text-2xl sm:text-3xl font-black tracking-tight leading-snug mb-3 text-slate-100">
-      Unconventional Science & <br/>
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-300 to-blue-400">Algorithmic Trading Research</span>
+      Theoretical Physics & <br/>
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-300 to-blue-400">Cosmological Blueprints</span>
     </h1>
 
     <p class="text-slate-300 text-sm max-w-md mx-auto mb-6 leading-relaxed font-medium">
-      Proprietary mathematical structures aur order-flow dynamics. Google account se encrypted session bind hota hai.
+      Discrete quantum switching, high-voltage electrostatic barriers, aur higher-dimensional spacetime metrics.
     </p>
 
-    <!-- Subscription Card -->
+    <!-- Master VIP Card (₹1,000) -->
     <div class="w-full glass-card rounded-2xl p-5 border border-pink-500/30 bg-gradient-to-b from-blue-950/40 via-purple-950/20 to-pink-950/20 flex flex-col gap-3.5 shadow-2xl">
       <div class="flex justify-between items-start">
         <div class="text-left">
           <span class="text-xs font-bold uppercase tracking-wider text-pink-400 flex items-center gap-1.5">
             <i class="fa-regular fa-clock"></i> 16 Days Validity
           </span>
-          <h4 class="text-base font-bold text-white mt-1">VIP Intelligence Membership</h4>
-          <p class="text-xs text-slate-300 mt-1 leading-relaxed">Sari papers, logic models aur derivations ka full access.</p>
+          <h4 class="text-base font-bold text-white mt-1">Full Research Manuscript (VIP)</h4>
+          <p class="text-xs text-slate-300 mt-1 leading-relaxed">Pura unified manuscript ek sath unlock karein (All 5 Sections + Wormhole Math).</p>
         </div>
         <div class="text-right">
           <span class="text-xl font-black text-pink-400">₹1,000</span>
           <span class="block text-xs font-medium text-slate-400">16 Days</span>
         </div>
       </div>
-      <button onclick="initiateCheckout('VIP 16-Day Membership', 1000)" class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 hover:opacity-95 text-white font-extrabold text-sm tracking-wide active:scale-95 transition shadow-lg shadow-pink-500/25">
-        Subscribe VIP Access (₹1,000)
+      <button onclick="initiateCheckout('manuscript_vip', 'Full Theoretical Physics Manuscript (VIP)', 1000, 'vip')" class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 hover:opacity-95 text-white font-extrabold text-sm tracking-wide active:scale-95 transition shadow-lg shadow-pink-500/25">
+        Unlock Full Concept (₹1,000)
       </button>
     </div>
   </header>
-    <!-- Blueprints Section -->
+  <!-- Blueprints Section -->
   <main id="catalogSection" class="w-full max-w-xl mx-auto px-4 py-4 space-y-4">
     <div class="flex justify-between items-end border-b border-slate-800 pb-2.5">
       <div>
-        <h2 class="text-lg font-bold text-slate-100">Research Dossiers</h2>
-        <p class="text-slate-400 text-xs">Single document licenses</p>
+        <h2 class="text-lg font-bold text-slate-100">Individual Theories</h2>
+        <p class="text-slate-400 text-xs">Stand-alone module licenses</p>
       </div>
       <span class="text-xs font-bold text-pink-400 bg-pink-950/40 px-2.5 py-1 rounded-lg border border-pink-500/30">₹300 Each</span>
     </div>
 
-    <!-- Paper 1 -->
+    <!-- Theory 01 -->
     <div class="glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800">
-      <div class="h-32 cyber-grid bg-slate-950 relative flex items-center justify-center border-b border-slate-800">
-        <div class="w-11 h-11 rounded-2xl bg-pink-500/10 border border-pink-500/40 flex items-center justify-center text-pink-400 shadow-md">
-          <i class="fa-solid fa-lock text-base"></i>
-        </div>
-        <span class="absolute top-3 right-3 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-slate-900 border border-pink-500/30 text-pink-300">
-          Model: 01
-        </span>
+      <div class="h-28 cyber-grid bg-slate-950 relative flex items-center justify-center border-b border-slate-800">
+        <i class="fa-solid fa-bolt text-2xl text-pink-400"></i>
+        <span class="absolute top-3 right-3 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-slate-900 border border-pink-500/30 text-pink-300">Section 2</span>
       </div>
       <div class="p-5 flex flex-col justify-between flex-1">
         <div>
-          <div class="flex justify-between items-center text-xs text-slate-400 uppercase tracking-wider font-bold">
-            <span>Market Topology</span>
+          <div class="flex justify-between items-center text-xs text-slate-400 uppercase font-bold">
+            <span>Electrostatics</span>
             <span class="text-pink-400 text-sm font-extrabold">₹300</span>
           </div>
-          <h3 class="text-base font-bold text-white mt-1">Non-Random Liquid Matrix</h3>
-          <p class="text-slate-300 text-xs mt-1.5 leading-relaxed">
-            Order flow liquidity distribution aur institutional algorithmic behavior ki theoretical derivation.
-          </p>
+          <h3 class="text-base font-bold text-white mt-1">High-Voltage Bare Nuclei & Recombination</h3>
+          <p class="text-slate-300 text-xs mt-1.5 leading-relaxed">Coulomb interaction, bare positive charge gradients aur thermodynamic energy conservation limits.</p>
         </div>
-        <button onclick="initiateCheckout('Non-Random Liquid Matrix', 300)" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-pink-300 font-bold text-xs border border-pink-500/30 active:scale-95 transition flex items-center justify-center gap-2">
-          <i class="fa-solid fa-key text-xs"></i> Unlock Blueprint (₹300)
+        <button onclick="initiateCheckout('theory_01', 'High-Voltage Bare Nuclei & Recombination', 300, 'single')" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-pink-300 font-bold text-xs border border-pink-500/30 active:scale-95 transition">
+          Unlock Theory 01 (₹300)
         </button>
       </div>
     </div>
 
-    <!-- Paper 2 -->
+    <!-- Theory 02 -->
     <div class="glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800">
-      <div class="h-32 cyber-grid bg-slate-950 relative flex items-center justify-center border-b border-slate-800">
-        <div class="w-11 h-11 rounded-2xl bg-blue-500/10 border border-blue-500/40 flex items-center justify-center text-blue-400 shadow-md">
-          <i class="fa-solid fa-lock text-base"></i>
-        </div>
-        <span class="absolute top-3 right-3 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-slate-900 border border-blue-500/30 text-blue-300">
-          Model: 02
-        </span>
+      <div class="h-28 cyber-grid bg-slate-950 relative flex items-center justify-center border-b border-slate-800">
+        <i class="fa-solid fa-microchip text-2xl text-blue-400"></i>
+        <span class="absolute top-3 right-3 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-slate-900 border border-blue-500/30 text-blue-300">Section 3</span>
       </div>
       <div class="p-5 flex flex-col justify-between flex-1">
         <div>
-          <div class="flex justify-between items-center text-xs text-slate-400 uppercase tracking-wider font-bold">
-            <span>Theoretical Physics</span>
+          <div class="flex justify-between items-center text-xs text-slate-400 uppercase font-bold">
+            <span>Quantum Propulsion</span>
             <span class="text-blue-400 text-sm font-extrabold">₹300</span>
           </div>
-          <h3 class="text-base font-bold text-white mt-1">Zero-Entropy Transmission Model</h3>
-          <p class="text-slate-300 text-xs mt-1.5 leading-relaxed">
-            Electromagnetic wavefront synchronization aur sub-atomic field interaction blueprint.
-          </p>
+          <h3 class="text-base font-bold text-white mt-1">Single-Electron Transistor & FEEP</h3>
+          <p class="text-slate-300 text-xs mt-1.5 leading-relaxed">Coulomb blockade, gate-modulated single electron transport aur field-emission vacuum micro-thrust.</p>
         </div>
-        <button onclick="initiateCheckout('Zero-Entropy Transmission Model', 300)" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-blue-300 font-bold text-xs border border-blue-500/30 active:scale-95 transition flex items-center justify-center gap-2">
-          <i class="fa-solid fa-key text-xs"></i> Unlock Blueprint (₹300)
+        <button onclick="initiateCheckout('theory_02', 'Single-Electron Transistor & FEEP', 300, 'single')" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-blue-300 font-bold text-xs border border-blue-500/30 active:scale-95 transition">
+          Unlock Theory 02 (₹300)
         </button>
       </div>
+    </div>
+
+    <!-- Theory 03 -->
+    <div class="glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800">
+      <div class="h-28 cyber-grid bg-slate-950 relative flex items-center justify-center border-b border-slate-800">
+        <i class="fa-solid fa-infinity text-2xl text-purple-400"></i>
+        <span class="absolute top-3 right-3 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-slate-900 border border-purple-500/30 text-purple-300">Section 4</span>
+      </div>
+      <div class="p-5 flex flex-col justify-between flex-1">
+        <div>
+          <div class="flex justify-between items-center text-xs text-slate-400 uppercase font-bold">
+            <span>Cosmology</span>
+            <span class="text-purple-400 text-sm font-extrabold">₹300</span>
+          </div>
+          <h3 class="text-base font-bold text-white mt-1">Graviton Leakage & Dark Matter Echoes</h3>
+          <p class="text-slate-300 text-xs mt-1.5 leading-relaxed">Closed string gravitons escaping into higher-dimensional bulk aur adjacent brane gravitational fields.</p>
+        </div>
+        <button onclick="initiateCheckout('theory_03', 'Graviton Leakage & Dark Matter Echoes', 300, 'single')" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-purple-300 font-bold text-xs border border-purple-500/30 active:scale-95 transition">
+          Unlock Theory 03 (₹300)
+        </button>
+      </div>
+    </div>
+
+    <!-- Theory 04 -->
+    <div class="glass-card rounded-2xl overflow-hidden flex flex-col border border-slate-800">
+      <div class="h-28 cyber-grid bg-slate-950 relative flex items-center justify-center border-b border-slate-800">
+        <i class="fa-solid fa-circle-nodes text-2xl text-emerald-400"></i>
+        <span class="absolute top-3 right-3 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full bg-slate-900 border border-emerald-500/30 text-emerald-300">Section 5</span>
+      </div>
+      <div class="p-5 flex flex-col justify-between flex-1">
+        <div>
+          <div class="flex justify-between items-center text-xs text-slate-400 uppercase font-bold">
+            <span>Spacetime Geometry</span>
+            <span class="text-emerald-400 text-sm font-extrabold">₹300</span>
+          </div>
+          <h3 class="text-base font-bold text-white mt-1">Wormhole Metrics & Exotic Energy Proofs</h3>
+          <p class="text-slate-300 text-xs mt-1.5 leading-relaxed">Flamm’s Paraboloid embedding coordinate singularity aur Weak Energy Condition (WEC) violation analysis.</p>
+        </div>
+        <button onclick="initiateCheckout('theory_04', 'Wormhole Metrics & Exotic Energy Proofs', 300, 'single')" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-300 font-bold text-xs border border-emerald-500/30 active:scale-95 transition">
+          Unlock Theory 04 (₹300)
+        </button>
+      </div>
+    </div>
+
+    <!-- Admin-Only Classified Vault (Hidden from all public visitors) -->
+    <div id="secretAdminCard" class="hidden glass-card rounded-2xl p-5 border border-amber-500/50 bg-amber-950/20">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">Classified V5 Protocol</span>
+        <i class="fa-solid fa-shield-cat text-amber-400"></i>
+      </div>
+      <h3 class="text-base font-bold text-white">Autonomous Brain - Bittensor Subnet Architecture</h3>
+      <p class="text-xs text-slate-300 mt-1 leading-relaxed">Survival Instinct engine, Extinction Metric tokenomics aur Layer-2 consensus data-flow.</p>
+      <button onclick="loadSecretOwnerBrain()" class="mt-3.5 w-full py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-extrabold text-xs active:scale-95 transition">
+        Open Classified Blueprint (Owner Access)
+      </button>
     </div>
   </main>
 
@@ -190,53 +234,27 @@
       <div class="flex justify-between items-center pb-4 border-b border-slate-800">
         <div>
           <div class="flex items-center gap-2 mb-1">
-            <span id="accessBadge" class="text-[10px] font-bold text-emerald-400 uppercase bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
-              Verified Session
-            </span>
-            <span id="expiryBadge" class="text-[10px] font-mono text-pink-300 bg-pink-950/60 px-2 py-0.5 rounded border border-pink-500/40">
-              16 Days Left
-            </span>
+            <span id="accessBadge" class="text-[10px] font-bold text-emerald-400 uppercase bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/30">Verified</span>
+            <span id="expiryBadge" class="text-[10px] font-mono text-pink-300 bg-pink-950/60 px-2 py-0.5 rounded border border-pink-500/40">Active</span>
           </div>
-          <h2 id="readerTitle" class="text-lg font-bold text-white">Classified Paper Dossier</h2>
+          <h2 id="readerTitle" class="text-lg font-bold text-white">Research Dossier</h2>
         </div>
         <button onclick="backToCatalog()" class="text-xs text-slate-300 hover:text-white px-3 py-1.5 border border-slate-700 bg-slate-800/80 rounded-lg">
           Exit
         </button>
       </div>
 
-      <!-- Reader Body -->
-      <div class="mt-4 space-y-4 text-slate-200 text-sm leading-relaxed">
-        <div>
-          <h3 class="text-xs font-bold text-pink-400 uppercase tracking-wide">1. Mathematical Model Topology</h3>
-          <p class="mt-1">
-            Under classical assumptions, price changes reflect martingale noise. Under dynamic liquidity constraint observations:
-          </p>
-        </div>
-
-        <div id="mathContainer" class="bg-slate-950 rounded-xl p-4 border border-slate-800 font-mono-code text-sm text-pink-200 overflow-x-auto text-center">
-        </div>
-
-        <div>
-          <h3 class="text-xs font-bold text-pink-400 uppercase tracking-wide">2. Institutional Latency Footprint</h3>
-          <p class="mt-1">
-            Order flow displacement parameters trigger directional micro-bursts prior to retail consolidated feeds. Real-time arbitrage vectors remain active across sub-10ms intervals.
-          </p>
-        </div>
-
-        <div class="cyber-grid bg-slate-950/90 rounded-xl p-6 border border-pink-500/20 flex flex-col items-center justify-center text-center">
-          <i class="fa-solid fa-chart-area text-3xl text-pink-400 mb-2"></i>
-          <span class="text-xs font-mono text-slate-200 font-bold">ACTIVE SCHEMATIC DATA LOADED</span>
-          <span class="text-xs text-slate-400 mt-1">Device license securely verified.</span>
-        </div>
+      <!-- Cloud Content Stream Target -->
+      <div id="manuscriptContent" class="mt-4 space-y-4 text-slate-200 text-sm leading-relaxed whitespace-pre-line font-sans">
       </div>
 
       <div class="mt-5 pt-3 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
-        <span id="expirySubtext">Active session.</span>
+        <span id="expirySubtext">Active Cloud Session.</span>
         <button onclick="clearSession()" class="text-rose-400 hover:text-rose-300 underline font-semibold">Logout Session</button>
       </div>
     </div>
   </section>
-    <!-- Strict Zero-Bypass Checkout Modal -->
+  <!-- Direct Checkout Modal -->
   <div id="paymentModal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 z-50">
     <div class="glass-card max-w-sm w-full rounded-2xl p-6 border border-slate-700 shadow-2xl relative text-center">
       <button onclick="closeCheckout()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
@@ -255,29 +273,26 @@
         <span id="checkoutItemPrice" class="text-xl font-black text-pink-400">₹0</span>
       </div>
 
-      <!-- QR Box -->
       <div class="bg-white p-2.5 rounded-2xl inline-block shadow-xl mb-4">
         <img id="checkoutQr" src="" alt="Scan & Pay" class="w-36 h-36 object-contain mx-auto" />
       </div>
 
-      <!-- Mobile 1-Tap UPI Intent Button -->
       <a id="checkoutIntentBtn" href="#" class="block w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-pink-500/20 active:scale-95 transition mb-4">
         <i class="fa-solid fa-mobile-screen mr-1.5"></i> Pay via UPI App
       </a>
 
-      <!-- Code Verification Box (Zero-Bypass) -->
       <div class="bg-slate-950/90 p-3.5 rounded-xl border border-slate-800 text-left">
         <label class="text-[11px] text-slate-300 block mb-1.5 font-bold uppercase tracking-wider">
           Enter Activation Passcode:
         </label>
         <div class="flex gap-2">
-          <input id="activationInput" type="text" placeholder="Passcode (e.g. VIP16)" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-pink-500 font-mono uppercase">
-          <button onclick="verifyCodeAndUnlock()" class="px-4 py-2 rounded-lg bg-pink-500 hover:bg-pink-400 text-white font-bold text-xs whitespace-nowrap active:scale-95 transition shadow-sm">
+          <input id="activationInput" type="text" placeholder="Passcode (e.g. LIGHT6666)" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white outline-none focus:border-pink-500 font-mono uppercase">
+          <button id="unlockBtn" onclick="verifyCodeAndUnlock()" class="px-4 py-2 rounded-lg bg-pink-500 hover:bg-pink-400 text-white font-bold text-xs whitespace-nowrap active:scale-95 transition shadow-sm">
             Unlock
           </button>
         </div>
         <p class="text-[10px] text-slate-400 mt-2 leading-relaxed">
-          * Bina valid passcode ke lock open nahi hoga. Cancel ya back karne par access restricted rahega.
+          * Passcode aapke Google account se permanent link hoga. Kisi doosre account par use nahi kiya ja sakta.
         </p>
       </div>
     </div>
@@ -288,11 +303,11 @@
   </footer>
 
   <script>
-    // UPI Config (Working format)
-    const UPI_ID = "light15666@okhdfcbank"; // Aapki video wali actual ID
+    // Configuration
+    const UPI_ID = "light15666@okhdfcbank";
     const PAYEE_NAME = "Light Intelligence";
+    const ADMIN_EMAIL = "light15666@gmail.com"; // Apna asli Google Login Email yahan rakhein
 
-    // Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyBdOXgCTjrYY_5QhmXFPn7ypjo5DoST5g8",
       authDomain: "light-inteligense.firebaseapp.com",
@@ -305,11 +320,26 @@
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+    const db = firebase.firestore();
     let currentUser = null;
 
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged(async (user) => {
       currentUser = user;
       updateAuthUI(user);
+
+      // Secret Admin Card Gatekeeper
+      const secretAdminCard = document.getElementById('secretAdminCard');
+      if (user && user.email === ADMIN_EMAIL) {
+        secretAdminCard.classList.remove('hidden');
+      } else {
+        secretAdminCard.classList.add('hidden');
+      }
+
+      if (user) {
+        await syncUserAccessFromCloud(user.uid);
+      } else {
+        validateSession();
+      }
     });
 
     function updateAuthUI(user) {
@@ -332,7 +362,7 @@
     function handleGoogleSignIn() {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider).catch(err => {
-        alert("Google Login: " + err.message);
+        alert("Google Login Error: " + err.message);
       });
     }
 
@@ -341,14 +371,13 @@
       clearSession(true);
     }
 
-    // Elements & State
     const catalogSection = document.getElementById('catalogSection');
     const readerView = document.getElementById('readerView');
     const readerTitle = document.getElementById('readerTitle');
     const accessBadge = document.getElementById('accessBadge');
     const expiryBadge = document.getElementById('expiryBadge');
     const expirySubtext = document.getElementById('expirySubtext');
-    const mathContainer = document.getElementById('mathContainer');
+    const manuscriptContent = document.getElementById('manuscriptContent');
 
     const paymentModal = document.getElementById('paymentModal');
     const checkoutItemTitle = document.getElementById('checkoutItemTitle');
@@ -356,32 +385,44 @@
     const checkoutQr = document.getElementById('checkoutQr');
     const checkoutIntentBtn = document.getElementById('checkoutIntentBtn');
     const activationInput = document.getElementById('activationInput');
+    const unlockBtn = document.getElementById('unlockBtn');
 
-    let selectedPlan = "";
+    let selectedDocId = "";
+    let selectedItemTitle = "";
     let selectedAmount = 0;
-    const SIXTEEN_DAYS = 16 * 24 * 60 * 60 * 1000;
+    let selectedPlanType = "";
 
-    window.addEventListener('DOMContentLoaded', () => {
-      renderFormula();
-      validateSession();
-    });
-
-    function renderFormula() {
-      if (window.katex && mathContainer) {
-        katex.render(
-          "\\Delta P_t = \\sum_{k=1}^n \\lambda_k \\cdot \\text{Sign}(I_k) \\cdot e^{-\\kappa(t - t_k)} + \\mathcal{N}(0, \\sigma^2)",
-          mathContainer,
-          { displayMode: true, throwOnError: false }
-        );
+    // Sync cloud license state
+    async function syncUserAccessFromCloud(uid) {
+      try {
+        const userDoc = await db.collection('users').doc(uid).get();
+        if (userDoc.exists) {
+          const data = userDoc.data();
+          if (data.plan === 'vip') {
+            const now = Date.now();
+            if (now < data.expiryTimestamp) {
+              const daysLeft = Math.ceil((data.expiryTimestamp - now) / (1000 * 60 * 60 * 24));
+              await fetchCloudDocument(data.docId || 'manuscript_vip', data.activeTitle || 'Full Theoretical Physics Manuscript (VIP)', 'VIP Active', `${daysLeft} Days Remaining`, `Expires in ${daysLeft} days.`);
+              return;
+            }
+          } else if (data.plan === 'single') {
+            await fetchCloudDocument(data.docId, data.activeTitle, 'Permanent License', 'Unlocked', 'Lifetime Access License.');
+            return;
+          }
+        }
+      } catch (e) {
+        console.error("Firestore sync error:", e);
       }
+      validateSession();
     }
 
     function validateSession() {
       const type = localStorage.getItem('li_active_type');
-      const item = localStorage.getItem('li_active_item');
+      const docId = localStorage.getItem('li_active_docId');
+      const title = localStorage.getItem('li_active_title');
       const expiry = localStorage.getItem('li_expiry_timestamp');
 
-      if (!type || !item) {
+      if (!type || !docId) {
         readerView.classList.add('hidden');
         catalogSection.classList.remove('hidden');
         return;
@@ -391,25 +432,32 @@
         const now = Date.now();
         if (now > parseInt(expiry, 10)) {
           clearSession(false);
-          alert("Aapka 16-Day VIP Access expire ho gaya hai. Dobara subscribe karein.");
         } else {
           const daysLeft = Math.ceil((parseInt(expiry, 10) - now) / (1000 * 60 * 60 * 24));
-          displayReader(item, 'VIP Active', `${daysLeft} Days Remaining`, `Expires in exactly ${daysLeft} days.`);
+          fetchCloudDocument(docId, title, 'VIP Active', `${daysLeft} Days Remaining`, `Expires in ${daysLeft} days.`);
         }
       } else if (type === 'single') {
-        displayReader(item, 'Permanent License', 'Unlocked', 'Lifetime Paper License.');
+        fetchCloudDocument(docId, title, 'Permanent License', 'Unlocked', 'Lifetime Access License.');
       }
     }
 
-    function initiateCheckout(item, amount) {
-      selectedPlan = item;
-      selectedAmount = amount;
+    function initiateCheckout(docId, title, amount, planType) {
+      if (!currentUser) {
+        alert("Pehle Google Login kijiye taaki aapka passcode aapki Google ID se bind ho sake.");
+        handleGoogleSignIn();
+        return;
+      }
 
-      checkoutItemTitle.innerText = item;
+      selectedDocId = docId;
+      selectedItemTitle = title;
+      selectedAmount = amount;
+      selectedPlanType = planType;
+
+      checkoutItemTitle.innerText = title;
       checkoutItemPrice.innerText = '₹' + amount;
       activationInput.value = "";
 
-      const cleanNote = item.replace(/[^a-zA-Z0-9 ]/g, "").trim();
+      const cleanNote = title.replace(/[^a-zA-Z0-9 ]/g, "").trim();
       const upiUri = `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(PAYEE_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent(cleanNote)}`;
       
       checkoutQr.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=1&data=${encodeURIComponent(upiUri)}`;
@@ -424,44 +472,144 @@
       paymentModal.classList.remove('flex');
     }
 
-    function verifyCodeAndUnlock() {
-      const code = activationInput.value.trim().toUpperCase();
+    // Passcode Verification & Account Binding
+    async function verifyCodeAndUnlock() {
+      if (!currentUser) {
+        alert("Pehle Google Login kijiye!");
+        return;
+      }
 
-      if (selectedAmount === 1000) {
-        if (code === "VIP16" || code === "LIGHT2026") {
-          const expiryDate = Date.now() + SIXTEEN_DAYS;
-          localStorage.setItem('li_active_type', 'vip');
-          localStorage.setItem('li_active_item', selectedPlan);
+      const inputCode = activationInput.value.trim().toUpperCase();
+      if (!inputCode) {
+        alert("Passcode daalna compulsory hai.");
+        return;
+      }
+
+      unlockBtn.disabled = true;
+      unlockBtn.innerText = "Checking...";
+
+      try {
+        const codeRef = db.collection('passcodes').doc(inputCode);
+        const codeSnap = await codeRef.get();
+
+        if (!codeSnap.exists) {
+          alert("Galat Passcode! Yeh code exist nahi karta.");
+          unlockBtn.disabled = false;
+          unlockBtn.innerText = "Unlock";
+          return;
+        }
+
+        const codeData = codeSnap.data();
+
+        if (codeData.used) {
+          if (codeData.claimedBy === currentUser.uid) {
+            alert("Aap pehle hi is code ko claim kar chuke hain.");
+            await syncUserAccessFromCloud(currentUser.uid);
+            closeCheckout();
+          } else {
+            alert("Access Denied: Yeh passcode pehle hi kisi doosre account par bind ho chuka hai.");
+          }
+          unlockBtn.disabled = false;
+          unlockBtn.innerText = "Unlock";
+          return;
+        }
+
+        // Lock Passcode to this Google ID
+        const batch = db.batch();
+        const duration = codeData.durationDays || 16;
+        const expiryDate = Date.now() + (duration * 24 * 60 * 60 * 1000);
+
+        batch.update(codeRef, {
+          used: true,
+          claimedBy: currentUser.uid,
+          claimedEmail: currentUser.email,
+          claimedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        const userRef = db.collection('users').doc(currentUser.uid);
+        batch.set(userRef, {
+          plan: codeData.plan,
+          docId: selectedDocId,
+          activeTitle: selectedItemTitle,
+          expiryTimestamp: codeData.plan === 'vip' ? expiryDate : null,
+          claimedCode: inputCode,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+
+        await batch.commit();
+
+        localStorage.setItem('li_active_type', codeData.plan);
+        localStorage.setItem('li_active_docId', selectedDocId);
+        localStorage.setItem('li_active_title', selectedItemTitle);
+        if (codeData.plan === 'vip') {
           localStorage.setItem('li_expiry_timestamp', expiryDate.toString());
-          closeCheckout();
-          displayReader(selectedPlan, 'VIP Active', '16 Days Remaining', 'Expires in 16 days.');
-          alert("VIP 16-Day Access Activated!");
-        } else {
-          alert("Galat Passcode! ₹1,000 payment confirm karke valid VIP passcode enter karein.");
         }
-      } else if (selectedAmount === 300) {
-        if (code === "PAPER300" || code === "LIGHT2026") {
-          localStorage.setItem('li_active_type', 'single');
-          localStorage.setItem('li_active_item', selectedPlan);
-          localStorage.removeItem('li_expiry_timestamp');
-          closeCheckout();
-          displayReader(selectedPlan, 'Permanent License', 'Unlocked', 'Lifetime Paper License.');
-          alert("Blueprint Dossier Unlocked!");
-        } else {
-          alert("Galat Passcode! ₹300 paper access ke liye sahi code daalein.");
-        }
+
+        closeCheckout();
+        alert(`Success! Passcode successfully aapki Google ID (${currentUser.email}) se lock ho gaya.`);
+        await syncUserAccessFromCloud(currentUser.uid);
+
+      } catch (err) {
+        alert("Firestore Error: " + err.message);
+      } finally {
+        unlockBtn.disabled = false;
+        unlockBtn.innerText = "Unlock";
       }
     }
 
-    function displayReader(title, typeText, timerText, footerText) {
+    // Dynamic Cloud Fetching (Zero Client-Side Storage)
+    async function fetchCloudDocument(docId, title, badge, expiry, subtext) {
+      catalogSection.classList.add('hidden');
+      readerView.classList.remove('hidden');
       readerTitle.innerText = title;
-      accessBadge.innerText = typeText;
-      expiryBadge.innerText = timerText;
-      expirySubtext.innerText = footerText;
+      accessBadge.innerText = badge;
+      expiryBadge.innerText = expiry;
+      expirySubtext.innerText = subtext;
+
+      manuscriptContent.innerHTML = "<div class='text-center py-8 text-pink-400 font-mono text-xs'>Decrypting secure payload from Firestore...</div>";
+
+      try {
+        const docSnap = await db.collection('classified_vault').doc(docId).get();
+        if (!docSnap.exists) {
+          manuscriptContent.innerHTML = "<p class='text-rose-400 font-bold'>Document not found in cloud database.</p>";
+          return;
+        }
+
+        manuscriptContent.innerText = docSnap.data().content;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (err) {
+        manuscriptContent.innerHTML = "<p class='text-rose-500 font-bold'>Security Alert: Permission Denied. Payment verified nahi hai.</p>";
+      }
+    }
+
+    // Secret Admin Vault Loader
+    async function loadSecretOwnerBrain() {
+      if (!currentUser || currentUser.email !== ADMIN_EMAIL) {
+        alert("Access Denied: Unauthorised clearance.");
+        return;
+      }
 
       catalogSection.classList.add('hidden');
       readerView.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      readerTitle.innerText = "Autonomous Brain (Classified V5)";
+      accessBadge.innerText = "Admin Clearance";
+      expiryBadge.innerText = "Permanent";
+      expirySubtext.innerText = "Air-gapped owner protocol.";
+
+      manuscriptContent.innerHTML = "<div class='text-center py-8 text-amber-400 font-mono text-xs'>Opening isolated owner vault...</div>";
+
+      try {
+        const docSnap = await db.collection('owner_classified_vault').doc('autonomous_brain').get();
+        if (!docSnap.exists) {
+          manuscriptContent.innerHTML = "<p class='text-rose-400 font-bold'>Owner vault document not found.</p>";
+          return;
+        }
+
+        manuscriptContent.innerText = docSnap.data().content;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (err) {
+        manuscriptContent.innerHTML = "<p class='text-rose-500 font-bold'>Security Alert: Permission Denied by Cloud Rules.</p>";
+      }
     }
 
     function backToCatalog() {
@@ -472,7 +620,8 @@
 
     function clearSession(reload = true) {
       localStorage.removeItem('li_active_type');
-      localStorage.removeItem('li_active_item');
+      localStorage.removeItem('li_active_docId');
+      localStorage.removeItem('li_active_title');
       localStorage.removeItem('li_expiry_timestamp');
       if (reload) location.reload();
     }
